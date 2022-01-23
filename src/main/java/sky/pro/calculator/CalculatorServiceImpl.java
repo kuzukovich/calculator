@@ -1,7 +1,6 @@
 package sky.pro.calculator;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Service
 public class CalculatorServiceImpl implements CalculatorService {
@@ -9,29 +8,25 @@ public class CalculatorServiceImpl implements CalculatorService {
         return "<b>Добро пожаловать в калькулятор</b>";
     }
 
-    public String plus(int num1, int num2) {
+    public int plus(int num1, int num2) {
         int result = num1 + num2;
-        String str = num1 + "+" + num2 + "=" + result;
-        return str;
+        return result;
     }
 
-    public String minus(int num1, int num2) {
+    public int minus(int num1, int num2) {
         int result = num1 - num2;
-        String str = num1 + "-" + num2 + "=" + result;
-        return str;
+        return result;
     }
 
-    public String multiply(int num1, int num2) {
+    public int multiply(int num1, int num2) {
         int result = num1 * num2;
-        String str = num1 + "*" + num2 + "=" + result;
-        return str;
+        return result;
     }
 
-    public String divide(int num1, int num2) {
+    public int divide(int num1, int num2) {
         if (num2 != 0) {
             int result = num1 / num2;
-            String str = num1 + "/" + num2 + "=" + result;
-            return str;
-        } else return "<b>Произошла ошибка</b> ";
+            return result;
+        } else throw new IllegalArgumentException("Dividing by zero is not allowed");
     }
 }
